@@ -23,7 +23,7 @@ func checkToken(token string) {
 	fasthttp.ReleaseResponse(res)
 
 	if statusCode == 200 {
-		file, err := os.OpenFile("./output.txt", os.O_RDWR|os.O_APPEND, 0660)
+		file, err := os.OpenFile("./output.txt", os.O_RDWR|os.O_APPEND|os.O_CREATE, 0660)
 		if err != nil {
 			panic(err)
 		}
