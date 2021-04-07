@@ -4,4 +4,4 @@
 3. Run `go run main.go` or use the precompiled binary
 
 # Note
-This code will mark tokens which are not phone verified (waiting for phone verified) as valid.
+This code will mark tokens which are not phone verified (waiting for phone verification) as valid.
