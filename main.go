@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"log"
 	"os"
+	"sync"
 
 	"github.com/valyala/fasthttp"
 )
@@ -43,9 +44,13 @@ func main() {
 	}
 	defer file.Close()
 
+	var wg sync.WaitGroup
+
 	scanner := bufio.NewScanner(file)
 	scanner.Split(bufio.ScanLines)
 	for scanner.Scan() {
-		checkToken(scanner.Text())
+		wg.Add(1)
+		go checkToken(scanner.Text())
 	}
+	wg.Wait()
 }
